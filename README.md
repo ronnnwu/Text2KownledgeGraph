@@ -1,68 +1,41 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The project was created by Ron Wu. For a POC purpose to showcase 
+that any text can be parsed into a sematic graph and thus can be consumed in a knowledge graph.
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+The projects consists of two parts:
 
-### `yarn start`
+### Fontend
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The frontend uses React + D3 for ploting the knowledge graph.<br />
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Runs the frontend in the development mode.<br />
+`cd` to frontend folder, 
 
-### `yarn test`
+    - Run `npm install`
+    - Adding the proxy by modifying line 17 of `Home.js` file from `ROOT = '' ` to `ROOT = localhost:8080`
+    - Then run `npm start` or `yarn start` 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This will start the frontend. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### `yarn build`
+### Backend
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The backend is purely JAVA: Springboot + StanfordNLP, so that it is production ready.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+To run the backend.<br/>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`cd` to backend folder, 
 
-### `yarn eject`
+    - Run `./mvnw spring-boot:run` 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+This will start the backend. Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Create a production build
+ 
+    - remove proxy by modifying line 17 of `Home.js` file under the `frontend/src` to `ROOT = '' `
+    - Then `cd` to frontend folder, run `npm run build `. This will create a production build for the frontend
+    - Copy everything in the `build` folder to `backend/src/main/resources/static/`. This allows Springboot to host the static web content.
+    - Then `cd` to backend folder,  run `./mvnw package -DskipTests` to create a single JAR build (about 300MB) 
+    - Then deploy to the any Cloud. Notice it requires 2GB heap space to run.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+ 
