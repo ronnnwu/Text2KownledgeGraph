@@ -3,9 +3,9 @@ that any text can be parsed into a sematic graph and thus can be consumed in a k
 
 ## Overview
 
-The projects consists of two parts:
+The project consists of two parts:
 
-### Fontend
+### Frontend
 
 The frontend uses React + D3 for plotting the knowledge graph.<br />
 
