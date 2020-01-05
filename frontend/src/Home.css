@@ -1,0 +1,14 @@
+.columns {
+    display: flex;
+    flex-direction: row;  
+    align-items: stretch; 
+    height: 900px;   
+}
+
+.column {
+    margin: 20px; 
+}
+ 
+.button {
+    margin-top: 13px;
+}
