@@ -41,19 +41,30 @@ export default class Home extends React.Component {
             .then(
                 (result) => {
                     console.log(result)
-                    const nodes = result.reduce(function(r, e) {
-                        r.push(e.source, e.target);
-                        return r;
-                      }, []);
+                    if (result.length === 0){
 
-                    const unique = [...new Set(nodes)]; 
+                        this.setState({  
+                            showGraph: false,
+                            loading: false
+                        });  
+                        alert("Please try a different text with more content.")
 
-                    this.setState({ 
-                        links: result,
-                        nodes: unique.map(u => ({id: u})),
-                        showGraph: true,
-                        loading: false
-                    });  
+                    }else { 
+                        const nodes = result.reduce(function(r, e) {
+                            r.push(e.source, e.target);
+                            return r;
+                          }, []);
+    
+                        const unique = [...new Set(nodes)]; 
+    
+                        this.setState({ 
+                            links: result,
+                            nodes: unique.map(u => ({id: u})),
+                            showGraph: true,
+                            loading: false
+                        });  
+                    }
+
                 }
             )
         }

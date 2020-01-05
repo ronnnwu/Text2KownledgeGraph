@@ -1,6 +1,8 @@
 The project was created by Ron Wu. For a POC purpose to showcase 
 that any text can be parsed into a sematic graph and thus can be consumed in a knowledge graph. Once the knowledge graph is built one can used for searching, analyzing or building chatbot.
 
+![Demo](screenrecording.gif)
+
 ## Overview
 
 The project consists of two parts:
